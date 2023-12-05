@@ -45,7 +45,7 @@ jobs:
         distribution: 'temurin'
         architecture: x64
 
-    - run: mvn --batch-mode --update-snapshots verify
+    - run: mvn --batch-mode --update-snapshots verify --file myapp/pom.xml
     - run: mkdir playground-maven && cp /*.jar playground-maven
     - uses: actions/upload-artifact@v3
       with:
