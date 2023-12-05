@@ -80,4 +80,17 @@
       </plugins>
     </pluginManagement>
   </build>
+
+  <distributionManagement>
+    <repository>
+      <id>maven-build-feed</id>
+      <url>https://pkgs.dev.azure.com/juvenileomri/build-maven/_packaging/maven-build-feed/maven/v1</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </distributionManagement>
 </project>
