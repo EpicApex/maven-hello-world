@@ -27,7 +27,7 @@ jobs:
         architecture: x64
         cache: 'maven' # cache Maven local dependencies and build outputs to speed up workflows
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file myapp/pom.xml
 
   publish-job:
     needs: build
