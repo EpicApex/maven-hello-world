@@ -32,6 +32,11 @@ steps:
       testRunBuildPlatform: 'Java'
       branchName: 'master'
       goals: 'package'
+  
+  - task: MavenAuthenticate@0
+    displayName: 'Maven Authenticate'
+    inputs:
+      artifactsFeeds: maven-build
       
   - task: CopyFiles@2
     inputs:
