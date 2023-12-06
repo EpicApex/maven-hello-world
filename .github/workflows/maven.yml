@@ -23,6 +23,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '21'
+        distribution: 'adopt'
         architecture: x64
         cache: 'maven' # cache Maven local dependencies and build outputs to speed up workflows
     - name: Build with Maven
@@ -41,6 +42,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '21'
+        distribution: 'adopt'
         architecture: x64
 
     - run: mvn --batch-mode --update-snapshots verify --file myapp/pom.xml
