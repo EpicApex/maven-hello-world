@@ -19,6 +19,10 @@ steps:
     env:
       JAVA_HOME: "/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
     inputs:
+      targetType: 'inline'
+      script: |
+        echo "Setting JAVA_HOME"
+        export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
       mavenPomFile: 'myapp/pom.xml'
       mavenOptions: '-Xmx3072m'
       javaHomeOption: 'JDKVersion'
@@ -49,6 +53,10 @@ steps:
     env:
       JAVA_HOME: "/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
     inputs:
+      targetType: 'inline'
+      script: |
+        echo "Setting JAVA_HOME"
+        export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"    
       mavenPomFile: 'myapp/pom.xml'
       mavenOptions: '-Xmx3072m'
       javaHomeOption: 'JDKVersion'
