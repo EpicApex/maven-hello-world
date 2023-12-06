@@ -8,8 +8,6 @@ trigger:
 
 pool: 
   name: local
-env:
-  JAVA_HOME: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
 
 steps:
   - script: |
