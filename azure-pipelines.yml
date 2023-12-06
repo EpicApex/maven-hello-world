@@ -14,6 +14,24 @@ variables:
 
 steps:
 
+steps:
+  - task: Maven@3
+    displayName: 'Increment Patch Version'
+    inputs:
+      mavenPomFile: 'myapp/pom.xml'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.21'
+      javaVersionSelection: '21'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      testRunPlatform: 'Java'
+      testRunFramework: 'JUnit'
+      testRunBuildPlatform: 'Java'
+      branchName: 'master'
+      goals: 'build-helper:parse-version versions:set'
+      options: '-DnewVersion=${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.nextIncrementalVersion}'
+
   - task: Maven@3
     inputs:
       mavenPomFile: 'myapp/pom.xml'
