@@ -9,12 +9,12 @@ trigger:
 pool: 
   name: local
 
+steps:
 - script: |
     echo "Setting JAVA_HOME"
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
   displayName: 'Set JAVA_HOME'
 
-steps:
 - task: Maven@3
   inputs:
     mavenPomFile: 'myapp/pom.xml'
