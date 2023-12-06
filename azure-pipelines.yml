@@ -9,6 +9,9 @@ trigger:
 pool: 
   name: local
 
+variables:
+  JAVA_HOME: "/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
+
 steps:
   - script: |
       echo "Setting JAVA_HOME"
