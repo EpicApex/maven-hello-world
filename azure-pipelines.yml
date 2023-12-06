@@ -16,6 +16,8 @@ steps:
     displayName: 'Set JAVA_HOME'
 
   - task: Maven@3
+    env:
+      JAVA_HOME: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
     inputs:
       mavenPomFile: 'myapp/pom.xml'
       mavenOptions: '-Xmx3072m'
@@ -44,6 +46,8 @@ steps:
       publishLocation: 'Container'
 
   - task: Maven@3
+    env:
+      JAVA_HOME: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
     inputs:
       mavenPomFile: 'myapp/pom.xml'
       mavenOptions: '-Xmx3072m'
