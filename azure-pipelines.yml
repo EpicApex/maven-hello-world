@@ -19,6 +19,7 @@ steps:
     javaVersionSelection: '21'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
+    jdkDestinationDirectory: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     testRunPlatform: 'Java'
     testRunFramework: 'JUnit'
@@ -44,6 +45,7 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     javaVersionSelection: '21'
+    jdkDestinationDirectory: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
     jdkArchitectureOption: 'x64'
     mavenAuthenticateFeed: true
     publishJUnitResults: false
