@@ -5,10 +5,8 @@
 
 trigger:
 - master
-- main
 
-pool:
-  vmImage: local
+pool: local
 
 steps:
 - task: Maven@3
