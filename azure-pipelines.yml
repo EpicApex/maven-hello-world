@@ -21,6 +21,7 @@ steps:
   - task: Maven@3
     env:
       JAVA_HOME: "/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
+      PATH: $(JAVA_HOME)/bin:$(PATH)
     inputs:
       targetType: 'inline'
       script: |
@@ -55,6 +56,7 @@ steps:
   - task: Maven@3
     env:
       JAVA_HOME: "/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
+      PATH: $(JAVA_HOME)/bin:$(PATH)
     inputs:
       targetType: 'inline'
       script: |
