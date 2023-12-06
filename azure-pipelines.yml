@@ -10,49 +10,49 @@ pool:
   name: local
 
 steps:
-- script: |
-    echo "Setting JAVA_HOME"
-    export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
-  displayName: 'Set JAVA_HOME'
+  - script: |
+      echo "Setting JAVA_HOME"
+      export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
+    displayName: 'Set JAVA_HOME'
 
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'myapp/pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.21'
-    javaVersionSelection: '21'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    jdkDestinationDirectory: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    testRunPlatform: 'Java'
-    testRunFramework: 'JUnit'
-    testRunBuildPlatform: 'Java'
-    branchName: 'master'
-    goals: 'package'
-    
-- task: CopyFiles@2
-  inputs:
-    Contents: '**'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+  - task: Maven@3
+    inputs:
+      mavenPomFile: 'myapp/pom.xml'
+      mavenOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.21'
+      javaVersionSelection: '21'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      jdkDestinationDirectory: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      testRunPlatform: 'Java'
+      testRunFramework: 'JUnit'
+      testRunBuildPlatform: 'Java'
+      branchName: 'master'
+      goals: 'package'
+      
+  - task: CopyFiles@2
+    inputs:
+      Contents: '**'
+      TargetFolder: '$(build.artifactstagingdirectory)'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'
 
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'myapp/pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.21'
-    javaVersionSelection: '21'
-    jdkDestinationDirectory: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
-    jdkArchitectureOption: 'x64'
-    mavenAuthenticateFeed: true
-    publishJUnitResults: false
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'deploy'
+  - task: Maven@3
+    inputs:
+      mavenPomFile: 'myapp/pom.xml'
+      mavenOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.21'
+      javaVersionSelection: '21'
+      jdkDestinationDirectory: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
+      jdkArchitectureOption: 'x64'
+      mavenAuthenticateFeed: true
+      publishJUnitResults: false
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      goals: 'deploy'
