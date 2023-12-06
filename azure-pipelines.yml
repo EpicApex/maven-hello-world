@@ -13,8 +13,6 @@ variables:
   JAVA_HOME: "/Library/Java/JavaVirtualMachines/jdk-21.0.1.jdk/Contents/Home"
 
 steps:
-
-steps:
   - task: Maven@3
     displayName: 'Increment Patch Version'
     inputs:
