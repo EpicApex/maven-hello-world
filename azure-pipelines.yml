@@ -13,20 +13,9 @@ variables:
   JAVA_HOME: "/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
 
 steps:
-  - script: |
-      echo "Setting JAVA_HOME"
-      export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
-    displayName: 'Set JAVA_HOME'
 
   - task: Maven@3
-    env:
-      JAVA_HOME: "/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
-      PATH: $(JAVA_HOME)/bin:$(PATH)
     inputs:
-      targetType: 'inline'
-      script: |
-        echo "Setting JAVA_HOME"
-        export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
       mavenPomFile: 'myapp/pom.xml'
       mavenOptions: '-Xmx3072m'
       javaHomeOption: '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home'
@@ -56,14 +45,7 @@ steps:
       publishLocation: 'Container'
 
   - task: Maven@3
-    env:
-      JAVA_HOME: "/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
-      PATH: $(JAVA_HOME)/bin:$(PATH)
     inputs:
-      targetType: 'inline'
-      script: |
-        echo "Setting JAVA_HOME"
-        export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"    
       mavenPomFile: 'myapp/pom.xml'
       mavenOptions: '-Xmx3072m'
       javaHomeOption: '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home'
