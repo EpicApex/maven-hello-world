@@ -1,0 +1,44 @@
+# create ubuntu 22.04 image with jdk 21.0.1
+FROM ubuntu:22.04
+
+# install necessary packages
+RUN apt-get update && apt-get install -y wget sudo
+
+# create a new user 'omri' with sudo access
+RUN useradd -m omri && echo "omri:omri" | chpasswd && adduser omri sudo
+
+# switch to user 'omri'
+RUN su -l omri
+WORKDIR /home/omri
+
+# install jdk 21.0.1 on ubuntu
+RUN wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz -P /tmp && \
+    sudo tar -xvf /tmp/openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/local && \
+    sudo rm -f /tmp/openjdk-21.0.1_linux-x64_bin.tar.gz
+
+# install maven 3.9.6 on ubuntu
+RUN wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz -P /tmp && \
+    sudo tar -xvf /tmp/apache-maven-3.9.6-bin.tar.gz -C /opt && \
+    sudo rm -f /tmp/apache-maven-3.9.6-bin.tar.gz
+
+# set the maven and jdk environment variables on ubuntu
+ENV JAVA_HOME=/usr/local/jdk-21.0.1
+ENV M2_HOME=/opt/maven
+ENV MAVEN_HOME=/opt/apache-maven-3.9.6
+ENV PATH="$JAVA_HOME/bin:$M2_HOME/bin:$MAVEN_HOME/bin:$PATH"
+
+# reduce some unwanted packages - decrease docker image size
+RUN sudo apt-get autoremove -y && sudo apt-get clean
+
+# copy the jar locally
+COPY myapp-1.0.1.jar /tmp
+
+# copy the pom.xml file and source code
+COPY myapp/pom.xml .
+COPY myapp/src ./src
+
+# build all dependencies
+RUN mvn clean package
+
+# run the application
+ENTRYPOINT ["java","-jar","/tmp/myapp-1.0.1.jar"]
