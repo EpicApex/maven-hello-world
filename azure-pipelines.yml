@@ -29,7 +29,8 @@ steps:
         export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
       mavenPomFile: 'myapp/pom.xml'
       mavenOptions: '-Xmx3072m'
-      javaHomeOption: 'JDKVersion'
+      javaHomeOption: '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home'
+      javaHomeSelection: 'JDKVersion'
       jdkVersionOption: '1.21'
       javaVersionSelection: '21'
       jdkArchitectureOption: 'x64'
@@ -64,7 +65,7 @@ steps:
         export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"    
       mavenPomFile: 'myapp/pom.xml'
       mavenOptions: '-Xmx3072m'
-      javaHomeOption: 'JDKVersion'
+      javaHomeOption: '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home'
       jdkVersionOption: '1.21'
       javaVersionSelection: '21'
       jdkDestinationDirectory: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
