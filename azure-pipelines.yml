@@ -15,7 +15,7 @@ steps:
     mavenPomFile: 'myapp/pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
+    jdkVersionOption: '1.21'
     javaVersionSelection: '21'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
@@ -43,7 +43,7 @@ steps:
     mavenPomFile: 'myapp/pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
+    jdkVersionOption: '1.21'
     javaVersionSelection: '21'
     jdkDestinationDirectory: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
     jdkArchitectureOption: 'x64'
