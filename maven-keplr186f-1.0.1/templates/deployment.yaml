@@ -16,7 +16,6 @@ spec:
       containers:
         - name: {{ .Values.App.planet_name | quote | default "keplr186f" }}
           image: {{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
-          # command: [{{ .Values.Execute.binary | quote }}, {{ .Values.Execute.binary | quote }}, {{ .Values.Execute.path | quote }}]
           env:
             - name: APP_OUTPUT
               valueFrom:
